@@ -29,4 +29,10 @@ export interface IUserFacade {
      * @memberof IUserFacade
      */
     consumer(id: number): Promise<void>;
+
+    /**
+     * @returns {Promise<any[]>}
+     * @memberof IUserFacade
+     */
+    puting(user: UserTo): Promise<UserTo>
 }

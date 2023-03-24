@@ -64,6 +64,38 @@ router.post('', UserFacade.save);
 
 
 /**
+ * PUT method route
+ * @example http://localhost:PORT/users
+ * @swagger
+ * /users:
+ *  put:
+ *    description: modify Users
+ *    tags: ["Users"]
+ *    requestBody:
+ *      description: object user
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/UserTo'
+ *    responses:
+ *      200:
+ *        description: All Users
+ *        content:
+ *          appication/json:
+ *            schema:
+ *              $ref: '#/components/schemas/UserTo'
+ *      400:
+ *        description: Error bad parameters
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ErrorTo'
+ */
+router.put('', UserFacade.puting);
+
+
+/**
  * DELETE method route
  * @example http://localhost:PORT/users
  * @swagger

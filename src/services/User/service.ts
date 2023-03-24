@@ -41,23 +41,6 @@ const UserService: IUserService = {
      * @returns {Promise < any[] >}
      * @memberof UserFacade
      */
-    async validateExistUserId(id?: number): Promise<void> {
-
-        let user = await User.findAll({
-            where: {
-                id: id
-            }
-        })
-
-        if (user.length <= 0) {
-            throw new ParametersError("El usuario no existe");
-        }
-    },
-    
-    /**
-     * @returns {Promise < any[] >}
-     * @memberof UserFacade
-     */
     async create(user: UserTo): Promise<Users> {
         let userModel = await User.create(user);
         return userModel
@@ -73,7 +56,17 @@ const UserService: IUserService = {
                 id:id
             }
         });
-    }
+    },
+
+        /**
+     * @returns {Promise < any[] >}
+     * @memberof UserFacade
+     */
+        async puting(user: UserTo): Promise<Users> {
+            let [userModel, istrue] = await User.upsert(user);
+            return userModel
+        },
+    
 }
 
 export default UserService;

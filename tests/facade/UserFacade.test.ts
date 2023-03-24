@@ -67,5 +67,16 @@ describe('UserFacade Test', () => {
         });
     });
 
+    describe('Change', () => {
+        it('should change one user', async () => {
+            let userTo: UserTo = {
+                id: 1,
+                name: "Juanito",
+                email: "Juanito@axity.com"
+            }
+            const user: UserTo = await UserFacade.puting(userTo);
+            expect(user.name).equal("Juanito");
+        });
+    });
 
 });

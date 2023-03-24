@@ -45,7 +45,16 @@ const UserFacade: IUserFacade = {
      */
     async consumer(id: number): Promise<void> {
         await UserService.del(id);
-    }
+    },
+
+        /**
+     * @returns {Promise < any[] >}
+     * @memberof UserFacade
+     */
+        async puting(user: UserTo): Promise<UserTo> {
+            let userResponse: UserTo = await UserService.puting(user);
+            return userResponse;
+        }
 }
 
 export default UserFacade;

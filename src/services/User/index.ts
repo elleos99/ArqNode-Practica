@@ -17,14 +17,6 @@ export async function validateExistUser(email?: string): Promise<void> {
     return await UserService.validateExistUser(email);
 }
 
-/**
- * @export
- * @returns {Promise < any[] >}
- */
-export async function validateExistUserId(id?: number): Promise<void> {
-    return await UserService.validateExistUserId(id);
-}
-
 
 /**
  * @export
@@ -40,4 +32,12 @@ export async function create(user: UserTo): Promise<UserTo> {
  */
 export async function del(id: number): Promise<void> {
     return await UserService.del(id);
+}
+
+/**
+ * @export
+ * @returns {Promise < any[] >}
+ */
+export async function puting(user: UserTo): Promise<UserTo> {
+    return await UserService.puting(user);
 }

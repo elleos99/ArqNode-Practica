@@ -31,10 +31,9 @@ export interface IUserService {
      */
     del(id: number): Promise<void>;
 
-
-    /**
+     /**
      * @returns {Promise<UserTo>}
      * @memberof IUserService
      */
-    validateExistUserId(id?: number): Promise<void>;
+     puting(user: UserTo): Promise<UserTo>;
 }
