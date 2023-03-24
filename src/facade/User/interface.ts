@@ -1,3 +1,4 @@
+import { UserTo } from "../../to/UserTo";
 
 /**
  * @export
@@ -10,4 +11,22 @@ export interface IUserFacade {
      * @memberof IUserFacade
      */
     findAll(): Promise<any[]>;
+
+    /**
+     * @returns {Promise<any[]>}
+     * @memberof IUserFacade
+     */
+    create(user: UserTo): Promise<UserTo>;
+
+    /**
+     * @returns {Promise<any[]>}
+     * @memberof IUserFacade
+     */
+    publish(id: number): Promise<void>;
+
+    /**
+     * @returns {Promise<any[]>}
+     * @memberof IUserFacade
+     */
+    consumer(id: number): Promise<void>;
 }

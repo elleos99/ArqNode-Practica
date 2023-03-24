@@ -7,13 +7,54 @@
   },
   "servers": [
     {
-      "url": "http://localhost:9100"
+      "url": "http://localhost:9105"
     }
   ],
   "apis": [
-    "C:\\Users\\Ricardo.Jimenez\\Documents\\workspace\\user-service\\src\\**\\**\\*.ts"
+    "C:\\Users\\user\\Documents\\Notas Cap trainee\\2023-03-17 Arquetipo Node + Unit Testing\\Ejercicio1\\user-service\\src\\**\\**\\*.ts"
   ],
   "paths": {
+    "/roles": {
+      "post": {
+        "description": "create Roles",
+        "tags": [
+          "Roles"
+        ],
+        "requestBody": {
+          "description": "object roles",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleTo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "All Roles",
+            "content": {
+              "appication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoleTo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users/": {
       "get": {
         "description": "Get all Users",
@@ -26,10 +67,85 @@
             "content": {
               "appication/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserTO"
+                  "$ref": "#/components/schemas/UserTo"
                 }
               }
             }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "description": "create Users",
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "description": "object user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserTo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "All Users",
+            "content": {
+              "appication/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserTo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error bad parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorTo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/id": {
+      "delete": {
+        "description": "create Users",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number",
+              "example": 1
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Users"
           },
           "400": {
             "description": "Error bad parameters",
@@ -68,20 +184,6 @@
   },
   "components": {
     "schemas": {
-      "UserTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "rjaforever"
-          },
-          "email": {
-            "type": "string",
-            "example": "rjaforever@gmail.com",
-            "message": "Users"
-          }
-        }
-      },
       "ErrorTo": {
         "type": "object",
         "properties": {
@@ -104,6 +206,41 @@
             "type": "string",
             "description": "Información sobre solución del error",
             "example": "http://info.com"
+          }
+        }
+      },
+      "RoleTo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "id of Role",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "name of Role",
+            "example": "Admin"
+          }
+        }
+      },
+      "UserTo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "description": "id of user",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "name of user",
+            "example": "Pedro"
+          },
+          "email": {
+            "type": "string",
+            "description": "email of user",
+            "example": "pedro@axity.com"
           }
         }
       }

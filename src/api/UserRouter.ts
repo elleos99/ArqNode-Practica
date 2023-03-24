@@ -21,27 +21,78 @@ const router: Router = Router();
  *        content:
  *          appication/json:
  *            schema:
- *              $ref: '#/components/schemas/UserTO'
+ *              $ref: '#/components/schemas/UserTo'
  *      400:
  *        description: Error bad parameters
  *        content:
  *          application/json:
  *            schema:
  *              $ref: '#/components/schemas/ErrorTo'
- * components:
- *   schemas:
- *     UserTO:
- *       type: object
- *       properties:
- *         name:
- *              type: string
- *              example: rjaforever
- *         email:
- *              type: string
- *              example: rjaforever@gmail.com
- *              message: Users
  */
-router.get('/users', UserFacade.findAll);
+router.get('', UserFacade.findAll);
+
+/**
+ * POST method route
+ * @example http://localhost:PORT/users
+ * @swagger
+ * /users:
+ *  post:
+ *    description: create Users
+ *    tags: ["Users"]
+ *    requestBody:
+ *      description: object user
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            $ref: '#/components/schemas/UserTo'
+ *    responses:
+ *      200:
+ *        description: All Users
+ *        content:
+ *          appication/json:
+ *            schema:
+ *              $ref: '#/components/schemas/UserTo'
+ *      400:
+ *        description: Error bad parameters
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ErrorTo'
+ */
+router.post('', UserFacade.save);
+
+
+/**
+ * DELETE method route
+ * @example http://localhost:PORT/users
+ * @swagger
+ * /users/{id}/id:
+ *  delete:
+ *    description: create Users
+ *    tags: ["Users"]
+ *    parameters : [
+ *      {
+ *         name: 'id',
+ *         in: 'path',
+ *         schema: {
+ *           type: 'number',
+ *           example: 1
+ *         },
+ *         required: true
+ *      }
+ *    ]
+ *    responses:
+ *      200:
+ *        description: All Users
+ *      400:
+ *        description: Error bad parameters
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/ErrorTo'
+ */
+router.delete('/:id/id', UserFacade.publish);
 
 /**
  * GET method route

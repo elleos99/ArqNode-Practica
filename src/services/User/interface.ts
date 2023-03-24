@@ -1,3 +1,5 @@
+import Users from "../../models/User.model";
+import { UserTo } from "../../to/UserTo";
 
 /**
  * @export
@@ -10,4 +12,29 @@ export interface IUserService {
      * @memberof IUserService
      */
     findAll(): Promise<any[]>;
+
+    /**
+     * @returns {Promise<UserTo>}
+     * @memberof IUserService
+     */
+    validateExistUser(email?: string): Promise<void>;
+
+     /**
+     * @returns {Promise<UserTo>}
+     * @memberof IUserService
+     */
+    create(user: UserTo): Promise<Users>;
+
+    /**
+     * @returns {Promise<UserTo>}
+     * @memberof IUserService
+     */
+    del(id: number): Promise<void>;
+
+
+    /**
+     * @returns {Promise<UserTo>}
+     * @memberof IUserService
+     */
+    validateExistUserId(id?: number): Promise<void>;
 }

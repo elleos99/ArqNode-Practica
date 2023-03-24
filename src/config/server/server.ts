@@ -29,12 +29,10 @@ db.authenticate()
 
 // initialize Kafka
 // let allTopics = [
-//     'pruebas',
-//     'test'
+//     'user-service'
 // ];
 // let topicsToSubscribe = [
-//     'pruebas',
-//     'test'
+//     'user-service'
 // ];
 // Kafka.init(allTopics).then(async() => {
 
