@@ -58,15 +58,15 @@ const UserService: IUserService = {
         });
     },
 
-        /**
+    /**
      * @returns {Promise < any[] >}
      * @memberof UserFacade
      */
-        async puting(user: UserTo): Promise<Users> {
-            let [userModel, istrue] = await User.upsert(user);
-            return userModel
-        },
-    
+    async puting(user: UserTo): Promise<Users> {
+        let [userModel, istrue] = await User.upsert(user);
+        return userModel
+    },
+
 }
 
 export default UserService;
