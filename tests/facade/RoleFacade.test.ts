@@ -14,12 +14,12 @@ describe('RoleFacade Test', () => {
     });
 
     describe('Create', () => {
-        it('should create one user', async () => {
+        it('should create one role', async () => {
             let roleTo: RoleTo = {
                 name: "Admin",
             }
-            const user: RoleTo = await RoleFacade.create(roleTo);
-            expect(user.id).to.not.be.null;
+            const role: RoleTo = await RoleFacade.create(roleTo);
+            expect(role.id).to.not.be.null;
         });
     });
 
@@ -36,4 +36,41 @@ describe('RoleFacade Test', () => {
         });
     });
 
+    describe('FindAll', () => {
+        it('should return one role', async () => {
+            const Role: any[] = await RoleFacade.findAll();
+            expect(1).equal(Role.length);
+        });
+    });
+
+    
+    describe('Change', () => {
+        it('should change one role', async () => {
+            let roleTo: RoleTo = {
+                id: 1,
+                name: "Rol cambiado",
+            }
+            const role: RoleTo = await RoleFacade.puting(roleTo);
+            expect(role.name).equal("Rol cambiado");
+        });
+    });
+
+    describe('Eliminate', () => {
+        it('should destoy one role', async () => {
+            let roleTo: RoleTo = {
+                id: 72,
+                name: "Rol A Destruir",
+            }
+            const role: RoleTo = await RoleFacade.create(roleTo);
+            await RoleFacade.consumer(72);
+            
+            try {
+                await RoleFacade.consumer(72)
+            } catch (error: any) {
+                expect(error).instanceOf(ParametersError)
+                expect(error.message).equal('Se borró el usuario')
+            }
+        });
+        
+    });
 });

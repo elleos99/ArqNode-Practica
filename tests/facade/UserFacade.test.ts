@@ -79,4 +79,23 @@ describe('UserFacade Test', () => {
         });
     });
 
+    describe('Eliminate', () => {
+        it('should destoy one user', async () => {
+            let userTo: UserTo = {
+                id: 72,
+                name: "Juan A Destruir",
+                email: "JuanDestroyed@axity.com"
+            }
+            const user: UserTo = await UserFacade.create(userTo);
+            await UserFacade.consumer(72);
+            
+            try {
+                await UserFacade.consumer(72)
+            } catch (error: any) {
+                expect(error).instanceOf(ParametersError)
+                expect(error.message).equal('Se borró el usuario')
+            }
+        });
+        
+    });
 });
